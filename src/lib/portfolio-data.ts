@@ -82,5 +82,5 @@ export async function fetchSkillGroups(): Promise<typeof fallbackSkillGroups> {
             }))
           : (fallback?.items ?? []),
     };
-  }) as typeof fallbackSkillGroups;
+  }) as unknown as typeof fallbackSkillGroups;
 }

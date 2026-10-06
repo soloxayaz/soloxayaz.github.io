@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AssetsRouteImport } from './routes/assets'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ManifestoRouteImport } from './routes/manifesto'
@@ -18,6 +19,7 @@ import { Route as ReposRouteImport } from './routes/repos'
 import { Route as SkillsRouteImport } from './routes/skills'
 import { Route as VoidRouteImport } from './routes/void'
 import { Route as WorkRouteImport } from './routes/work'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -27,6 +29,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AssetsRoute = AssetsRouteImport.update({
@@ -64,10 +71,16 @@ const WorkRoute = WorkRouteImport.update({
   path: '/work',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/assets': typeof AssetsRoute
   '/contact': typeof ContactRoute
   '/manifesto': typeof ManifestoRoute
@@ -75,10 +88,12 @@ export interface FileRoutesByFullPath {
   '/skills': typeof SkillsRoute
   '/void': typeof VoidRoute
   '/work': typeof WorkRoute
+  '/admin/login': typeof AdminLoginRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/assets': typeof AssetsRoute
   '/contact': typeof ContactRoute
   '/manifesto': typeof ManifestoRoute
@@ -86,11 +101,13 @@ export interface FileRoutesByTo {
   '/skills': typeof SkillsRoute
   '/void': typeof VoidRoute
   '/work': typeof WorkRoute
+  '/admin/login': typeof AdminLoginRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/assets': typeof AssetsRoute
   '/contact': typeof ContactRoute
   '/manifesto': typeof ManifestoRoute
@@ -98,12 +115,14 @@ export interface FileRoutesById {
   '/skills': typeof SkillsRoute
   '/void': typeof VoidRoute
   '/work': typeof WorkRoute
+  '/admin/login': typeof AdminLoginRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/admin'
     | '/assets'
     | '/contact'
     | '/manifesto'
@@ -111,10 +130,12 @@ export interface FileRouteTypes {
     | '/skills'
     | '/void'
     | '/work'
+    | '/admin/login'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/admin'
     | '/assets'
     | '/contact'
     | '/manifesto'
@@ -122,10 +143,12 @@ export interface FileRouteTypes {
     | '/skills'
     | '/void'
     | '/work'
+    | '/admin/login'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/admin'
     | '/assets'
     | '/contact'
     | '/manifesto'
@@ -133,11 +156,13 @@ export interface FileRouteTypes {
     | '/skills'
     | '/void'
     | '/work'
+    | '/admin/login'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRouteWithChildren
   AssetsRoute: typeof AssetsRoute
   ContactRoute: typeof ContactRoute
   ManifestoRoute: typeof ManifestoRoute
@@ -161,6 +186,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/assets': {
@@ -212,12 +244,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
+
+interface AdminRouteChildren {
+  AdminLoginRoute: typeof AdminLoginRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminLoginRoute: AdminLoginRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRouteWithChildren,
   AssetsRoute: AssetsRoute,
   ContactRoute: ContactRoute,
   ManifestoRoute: ManifestoRoute,
