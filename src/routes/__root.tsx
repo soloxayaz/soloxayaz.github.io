@@ -41,6 +41,18 @@ export const Route = createRootRoute({
   component: RootDocument,
 });
 
+function AdminAwareShell() {
+  if (typeof window !== "undefined" && window.location.pathname.startsWith("/admin")) {
+    return <Outlet />;
+  }
+
+  return (
+    <PageShell>
+      <Outlet />
+    </PageShell>
+  );
+}
+
 function RootDocument() {
   return (
     <html lang="en" className="antialiased" suppressHydrationWarning>
