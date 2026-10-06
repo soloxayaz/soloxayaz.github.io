@@ -62,7 +62,7 @@ function RootDocument() {
       <body className="bg-ink text-paper">
         <PreviewHostBridge />
         <AuthProvider>
-          <Outlet />
+          <AdminAwareShell />
         </AuthProvider>
         <Scripts />
       </body>
