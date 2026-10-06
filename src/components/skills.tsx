@@ -1,10 +1,27 @@
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { skillGroups } from "@/lib/content";
+import { skillGroups as fallbackSkillGroups } from "@/lib/content";
+import { fetchSkillGroups } from "@/lib/portfolio-data";
 import { easeOut } from "@/lib/motion";
 import { Reveal, SectionLabel } from "@/components/reveal";
 
 export function Skills() {
   const reduced = useReducedMotion();
+  const [skillGroups, setSkillGroups] = useState(fallbackSkillGroups);
+
+  useEffect(() => {
+    let active = true;
+
+    fetchSkillGroups().then((remoteGroups) => {
+      if (active && remoteGroups.length > 0) {
+        setSkillGroups(remoteGroups);
+      }
+    });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <section id="skills" className="relative z-10 px-5 py-24 sm:px-8 md:py-32">
