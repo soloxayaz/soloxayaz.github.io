@@ -50,9 +50,7 @@ function RootDocument() {
       <body className="bg-ink text-paper">
         <PreviewHostBridge />
         <AuthProvider>
-          <PageShell>
-            <Outlet />
-          </PageShell>
+          <Outlet />
         </AuthProvider>
         <Scripts />
       </body>
