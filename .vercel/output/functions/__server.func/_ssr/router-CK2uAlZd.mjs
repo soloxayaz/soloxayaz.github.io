@@ -7,7 +7,7 @@ import { t as motion } from "../_libs/motion.mjs";
 import { n as clsx } from "../_libs/class-variance-authority+clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
 import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-CmaDZxVN.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-CK2uAlZd.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -1202,10 +1202,10 @@ function RootDocument() {
 		})]
 	});
 }
-var $$splitComponentImporter$10 = () => import("./routes-CZ1wvkpQ.mjs");
+var $$splitComponentImporter$10 = () => import("./routes-CPxP6xYO.mjs");
 var Route$10 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$10, "component") });
 /** Old single-page anchors (/#work …) now live on their own pages. */
-var $$splitComponentImporter$9 = () => import("./about-_bJcOGTP.mjs");
+var $$splitComponentImporter$9 = () => import("./about-E3jeK0Vr.mjs");
 var Route$9 = createFileRoute("/about")({
 	head: () => ({ meta: [{ title: "about · the great ayaz" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$9, "component")
@@ -1215,27 +1215,27 @@ var Route$8 = createFileRoute("/admin")({
 	ssr: false,
 	component: lazyRouteComponent($$splitComponentImporter$8, "component")
 });
-var $$splitComponentImporter$7 = () => import("./assets-DTXdttTb.mjs");
+var $$splitComponentImporter$7 = () => import("./assets-Bfx5Rm8q.mjs");
 var Route$7 = createFileRoute("/assets")({
 	head: () => ({ meta: [{ title: "assets · the great ayaz" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$7, "component")
 });
-var $$splitComponentImporter$6 = () => import("./contact-C2tkoEwK.mjs");
+var $$splitComponentImporter$6 = () => import("./contact-JIqYBNhv.mjs");
 var Route$6 = createFileRoute("/contact")({
 	head: () => ({ meta: [{ title: "contact · the great ayaz" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$6, "component")
 });
-var $$splitComponentImporter$5 = () => import("./manifesto-CIl7X3bw.mjs");
+var $$splitComponentImporter$5 = () => import("./manifesto-C_KmYzTk.mjs");
 var Route$5 = createFileRoute("/manifesto")({
 	head: () => ({ meta: [{ title: "manifesto · the great ayaz" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$5, "component")
 });
-var $$splitComponentImporter$4 = () => import("./repos-DMv1APk7.mjs");
+var $$splitComponentImporter$4 = () => import("./repos-B9JezIT0.mjs");
 var Route$4 = createFileRoute("/repos")({
 	head: () => ({ meta: [{ title: "repos · the great ayaz" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-var $$splitComponentImporter$3 = () => import("./skills-BAmDu_VR.mjs");
+var $$splitComponentImporter$3 = () => import("./skills-gOM97bmP.mjs");
 var Route$3 = createFileRoute("/skills")({
 	head: () => ({ meta: [{ title: "skills · the great ayaz" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$3, "component")
@@ -1245,7 +1245,7 @@ var Route$2 = createFileRoute("/void")({
 	head: () => ({ meta: [{ title: "void · the great ayaz" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-var $$splitComponentImporter$1 = () => import("./work-Bm_4LavY.mjs");
+var $$splitComponentImporter$1 = () => import("./work-B9UK76n7.mjs");
 var Route$1 = createFileRoute("/work")({
 	head: () => ({ meta: [{ title: "work · the great ayaz" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$1, "component")

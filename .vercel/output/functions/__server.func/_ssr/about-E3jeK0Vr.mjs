@@ -1,7 +1,7 @@
 import { C as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
-import { l as now, p as stats, r as about, s as focus } from "./router-CmaDZxVN.mjs";
-import { n as SectionLabel, t as Reveal } from "./reveal-CMVTa6w8.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/about-_bJcOGTP.js
+import { l as now, p as stats, r as about, s as focus } from "./router-CK2uAlZd.mjs";
+import { n as SectionLabel, t as Reveal } from "./reveal-B7b66KeA.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/about-E3jeK0Vr.js
 var import_jsx_runtime = require_jsx_runtime();
 function About() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {

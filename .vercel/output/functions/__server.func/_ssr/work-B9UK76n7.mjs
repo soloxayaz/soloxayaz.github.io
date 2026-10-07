@@ -4,9 +4,10 @@ import { C as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-ro
 import { a as ArrowUpRight } from "../_libs/lucide-react.mjs";
 import { a as LayoutGroup, o as AnimatePresence, t as useReducedMotion } from "../_libs/framer-motion+[...].mjs";
 import { t as motion } from "../_libs/motion.mjs";
-import { h as easeOut, n as cn, o as categories, u as projects } from "./router-CmaDZxVN.mjs";
-import { n as SectionLabel } from "./reveal-CMVTa6w8.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/work-Bm_4LavY.js
+import { h as easeOut, n as cn, o as categories, u as projects } from "./router-CK2uAlZd.mjs";
+import { n as SectionLabel } from "./reveal-B7b66KeA.mjs";
+import { t as fetchProjects } from "./portfolio-data-DuQ6SIhI.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/work-B9UK76n7.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function ProjectPattern({ pattern, className }) {
@@ -103,8 +104,20 @@ function ProjectCard({ project, featured }) {
 }
 function Projects() {
 	const [filter, setFilter] = (0, import_react.useState)("all");
+	const [projects$1, setProjects] = (0, import_react.useState)([]);
 	const reduced = useReducedMotion();
-	const visible = (0, import_react.useMemo)(() => filter === "all" ? projects : projects.filter((p) => p.category === filter), [filter]);
+	(0, import_react.useEffect)(() => {
+		let active = true;
+		fetchProjects().then((rows) => {
+			if (active) setProjects(rows);
+		}).catch(() => {
+			if (active) setProjects(projects);
+		});
+		return () => {
+			active = false;
+		};
+	}, []);
+	const visible = (0, import_react.useMemo)(() => filter === "all" ? projects$1 : projects$1.filter((p) => p.category === filter), [filter, projects$1]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 		id: "work",
 		className: "relative z-10 px-5 py-24 sm:px-8 md:py-32",

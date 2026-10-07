@@ -1,7 +1,7 @@
 import { C as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
-import { i as assets } from "./router-CmaDZxVN.mjs";
-import { n as SectionLabel, t as Reveal } from "./reveal-CMVTa6w8.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/assets-DTXdttTb.js
+import { i as assets } from "./router-CK2uAlZd.mjs";
+import { n as SectionLabel, t as Reveal } from "./reveal-B7b66KeA.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/assets-Bfx5Rm8q.js
 var import_jsx_runtime = require_jsx_runtime();
 function Assets() {
 	const cells = [

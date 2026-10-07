@@ -3,35 +3,12 @@ import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].
 import { C as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as useReducedMotion } from "../_libs/framer-motion+[...].mjs";
 import { t as motion } from "../_libs/motion.mjs";
-import { f as skillGroups, h as easeOut } from "./router-CmaDZxVN.mjs";
-import { n as SectionLabel, t as Reveal } from "./reveal-CMVTa6w8.mjs";
-import { t as supabase } from "./supabase-B1UUYl23.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/skills-BAmDu_VR.js
+import { f as skillGroups, h as easeOut } from "./router-CK2uAlZd.mjs";
+import { n as SectionLabel, t as Reveal } from "./reveal-B7b66KeA.mjs";
+import { n as fetchSkillGroups } from "./portfolio-data-DuQ6SIhI.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/skills-gOM97bmP.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-async function fetchSkillGroups() {
-	if (!supabase) return skillGroups;
-	const { data, error } = await supabase.from("portfolio_skills").select("id, group_key, group_label, skill_name, level, sort_order").eq("published", true).order("sort_order", { ascending: true });
-	if (error || !data?.length) return skillGroups;
-	const rows = data;
-	return [
-		"frontend",
-		"backend",
-		"data",
-		"infra"
-	].map((groupKey) => {
-		const groupRows = rows.filter((row) => row.group_key === groupKey);
-		const fallback = skillGroups.find((group) => group.id === groupKey);
-		return {
-			id: groupKey,
-			label: groupRows[0]?.group_label ?? fallback?.label ?? groupKey,
-			items: groupRows.length > 0 ? groupRows.map((row) => ({
-				name: row.skill_name,
-				hint: row.level
-			})) : fallback?.items ?? []
-		};
-	});
-}
 function Skills() {
 	const reduced = useReducedMotion();
 	const [skillGroups$1, setSkillGroups] = (0, import_react.useState)(skillGroups);

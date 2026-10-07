@@ -1,13 +1,14 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import {
   categories,
-  projects,
+  projects as fallbackProjects,
   type Category,
   type Project,
 } from "@/lib/content";
+import { fetchProjects } from "@/lib/portfolio-data";
 import { easeOut } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import { ProjectPattern } from "@/components/project-pattern";
@@ -80,11 +81,30 @@ function ProjectCard({ project, featured }: { project: Project; featured?: boole
 
 export function Projects() {
   const [filter, setFilter] = useState<Category>("all");
+  const [projects, setProjects] = useState<Project[]>([]);
   const reduced = useReducedMotion();
+
+  // Published projects come from Supabase (the same rows the admin panel edits).
+  // fetchProjects falls back to the built-in list if the database is unreachable.
+  useEffect(() => {
+    let active = true;
+
+    fetchProjects()
+      .then((rows) => {
+        if (active) setProjects(rows);
+      })
+      .catch(() => {
+        if (active) setProjects(fallbackProjects);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const visible = useMemo(
     () => (filter === "all" ? projects : projects.filter((p) => p.category === filter)),
-    [filter],
+    [filter, projects],
   );
 
   return (

@@ -1,9 +1,9 @@
 import { C as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as useReducedMotion } from "../_libs/framer-motion+[...].mjs";
 import { t as motion } from "../_libs/motion.mjs";
-import { a as beliefs, h as easeOut } from "./router-CmaDZxVN.mjs";
-import { n as SectionLabel } from "./reveal-CMVTa6w8.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/manifesto-CIl7X3bw.js
+import { a as beliefs, h as easeOut } from "./router-CK2uAlZd.mjs";
+import { n as SectionLabel } from "./reveal-B7b66KeA.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/manifesto-C_KmYzTk.js
 var import_jsx_runtime = require_jsx_runtime();
 function Manifesto() {
 	const reduced = useReducedMotion();
