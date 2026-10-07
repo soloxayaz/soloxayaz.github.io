@@ -324,7 +324,6 @@ export function AdminDashboard() {
     );
   }
 
-  if (checking) { return (<main className="admin-page admin-center"><div className="admin-loading"><span className="admin-dot" />Loading control room…</div></main>); }
 
   if (!authorized) {
     if (!error) {
