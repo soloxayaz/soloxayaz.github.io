@@ -37,9 +37,27 @@ const EMPTY_SKILL = {
   published: true,
 };
 
+/*
+ * Supabase persists its own session under `sb-<ref>-auth-token`.
+ * Its presence is only a render hint: a logged-out visitor has no key,
+ * so the login form renders immediately with no loading gate. Real
+ * authorization still happens in boot() via getSession() + email check.
+ */
+function hasPersistedSession() {
+  if (typeof window === "undefined") return false;
+
+  try {
+    return Object.keys(window.localStorage).some((key) =>
+      /^sb-.+-auth-token$/.test(key)
+    );
+  } catch {
+    return false;
+  }
+}
+
 export function AdminDashboard() {
   const [authorized, setAuthorized] = useState(false);
-  const [checking, setChecking] = useState(false);
+  const [checking, setChecking] = useState(hasPersistedSession);
 
   const [userEmail, setUserEmail] = useState("");
 
@@ -294,6 +312,19 @@ export function AdminDashboard() {
     await signOut();
     window.location.replace("/admin/login");
   }
+
+  if (checking) {
+    return (
+      <main className="admin-page admin-center">
+        <div className="admin-loading">
+          <span className="admin-dot" />
+          Loading control room…
+        </div>
+      </main>
+    );
+  }
+
+  if (checking) { return (<main className="admin-page admin-center"><div className="admin-loading"><span className="admin-dot" />Loading control room…</div></main>); }
 
   if (!authorized) {
     if (!userEmail && !error) {
