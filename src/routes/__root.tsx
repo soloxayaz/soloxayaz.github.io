@@ -1,4 +1,4 @@
-import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
+import { createRootRoute, HeadContent, Outlet, Scripts, useRouterState } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PageShell } from "@/components/page-shell";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
@@ -42,7 +42,8 @@ export const Route = createRootRoute({
 });
 
 function AdminAwareShell() {
-  if (typeof window !== "undefined" && window.location.pathname.startsWith("/admin")) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  if (pathname.startsWith("/admin")) {
     return <Outlet />;
   }
 
