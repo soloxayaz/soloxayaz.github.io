@@ -94,9 +94,15 @@ export async function insertProject(
 ) {
   const client = getSupabase();
 
+  // portfolio_projects.id is a required text primary key.
+  const row = {
+    ...project,
+    id: crypto.randomUUID(),
+  };
+
   const { data, error } = await client
     .from("portfolio_projects")
-    .insert(project)
+    .insert(row)
     .select()
     .single();
 
