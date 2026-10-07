@@ -39,7 +39,7 @@ const EMPTY_SKILL = {
 
 export function AdminDashboard() {
   const [authorized, setAuthorized] = useState(false);
-  const [checking, setChecking] = useState(true);
+  const [checking, setChecking] = useState(false);
 
   const [userEmail, setUserEmail] = useState("");
 
@@ -293,17 +293,6 @@ export function AdminDashboard() {
   async function logout() {
     await signOut();
     window.location.replace("/admin/login");
-  }
-
-  if (checking) {
-    return (
-      <main className="admin-page admin-center">
-        <div className="admin-loading">
-          <span className="admin-dot" />
-          Loading control room…
-        </div>
-      </main>
-    );
   }
 
   if (!authorized) {
